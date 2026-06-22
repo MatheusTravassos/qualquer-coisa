@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rota Paraná - Mobile First</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1 class="brand">Rota Paraná</h1>
+      <nav class="nav">
+        <button id="theme-toggle" class="nav-btn theme-btn" type="button" aria-label="Alternar tema">Tema:
+          Claro</button>
+        <button id="nav-home" class="nav-btn">Início</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home-section" class="card">
+      <h2>Ajude a descobrir o Paraná</h2>
+      <p class="lead">Aplicação mobile-first para ajudar pessoas a conhecer e explorar o Paraná.</p>
+
+      <h3 class="section-title">Cidades</h3>
+      <ul id="cities"></ul>
+
+      <h3 class="section-title">Atrações</h3>
+      <ul id="attractions"></ul>
+
+      <div class="map-card">
+        <div>
+          <h3 class="section-title">Mapa interativo do Paraná</h3>
+          <p class="lead">Clique em qualquer marcador para ver os pontos turísticos da região escolhida.</p>
+        </div>
+        <div class="map-grid">
+          <div id="map" aria-label="Mapa interativo do Paraná"></div>
+          <aside id="map-details" class="map-details">
+            <h4>Selecione um ponto</h4>
+            <p class="muted">Clique em um marcador no mapa para visualizar os principais pontos turísticos do local.</p>
+          </aside>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <p>Projeto simples — versão inicial sem dependências externas.</p>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
