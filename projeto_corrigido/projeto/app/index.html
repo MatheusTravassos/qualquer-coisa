@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ivaiporã Turismo — Descubra a cidade</title>
+  <meta name="description" content="Guia turístico completo de Ivaiporã, Paraná. Descubra atrações, pontos turísticos e a beleza natural da cidade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash-screen" class="splash">
+    <div class="splash-content">
+      <img src="ivaipora_logo.jpg" alt="Ivaiporã Logo" class="splash-logo" width="1024" height="1024" decoding="async" />
+      <h1 class="splash-title">Ivaiporã</h1>
+      <p class="splash-subtitle" data-i18n="splash_subtitle">Descubra a beleza da nossa cidade</p>
+      <div class="splash-loader">
+        <div class="splash-loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SETTINGS MODAL ===== -->
+  <div id="settings-overlay" class="settings-overlay" hidden>
+    <div class="settings-modal">
+      <div class="settings-header">
+        <h3 data-i18n="settings_title">Configurações</h3>
+        <button id="settings-close" class="settings-close-btn" type="button" aria-label="Fechar configurações">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="settings-body">
+        <!-- Language -->
+        <div class="settings-item">
+          <div class="settings-item-info">
+            <span class="settings-icon">🌐</span>
+            <div>
+              <p class="settings-label" data-i18n="settings_language">Idioma</p>
+              <p class="settings-desc" data-i18n="settings_language_desc">Português / English / Español</p>
+            </div>
+          </div>
+          <div class="lang-selector">
+            <button class="lang-btn active" data-lang="pt" type="button">PT</button>
+            <button class="lang-btn" data-lang="en" type="button">EN</button>
+            <button class="lang-btn" data-lang="es" type="button">ES</button>
+          </div>
+        </div>
+
+        <!-- Theme -->
+        <div class="settings-item">
+          <div class="settings-item-info">
+            <span class="settings-icon" id="theme-icon">☀️</span>
+            <div>
+              <p class="settings-label" data-i18n="settings_theme">Tema</p>
+              <p class="settings-desc" data-i18n="settings_theme_desc">Modo claro ou escuro</p>
+            </div>
+          </div>
+          <button id="theme-toggle" class="toggle-pill theme-pill" type="button">
+            <span class="toggle-option active" data-theme="light" data-i18n="theme_light">Claro</span>
+            <span class="toggle-option" data-theme="dark" data-i18n="theme_dark">Escuro</span>
+            <span class="toggle-slider"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-footer">
+        <p class="settings-version">Ivaiporã Turismo v3.0</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOPBAR ===== -->
+  <header class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <h1 class="brand">
+        <span class="brand-icon">🌸</span>
+        Ivaiporã
+      </h1>
+      <nav class="nav">
+        <button id="nav-home" class="nav-btn" type="button" data-i18n="nav_home">Início</button>
+        <button id="settings-btn" class="nav-btn settings-gear-btn" type="button" aria-label="Configurações">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <!-- Welcome Section -->
+    <section id="welcome-section" class="welcome-hero">
+      <div class="welcome-hero-bg">
+        <img src="ivaipora_hero.jpg" alt="Vista panorâmica de Ivaiporã" class="welcome-hero-img" width="1024" height="1024" decoding="async" fetchpriority="high" />
+        <div class="welcome-hero-overlay"></div>
+      </div>
+      <div class="welcome-hero-content">
+        <img src="ivaipora_logo.jpg" alt="Ivaiporã Turismo" class="welcome-logo" width="1024" height="1024" decoding="async" />
+        <h2 data-i18n="welcome_title" class="welcome-hero-title">Bem-vindo a Ivaiporã</h2>
+        <p class="welcome-hero-tagline" data-i18n="welcome_tagline">Capital das Flores — Paraná, Brasil 🌸</p>
+        <p class="welcome-hero-desc" data-i18n="welcome_desc">Explore o Lago de Santana, a Casa da Memória, o IFPR, a Univale, o Café do Urso e muito mais. Seu guia turístico completo.</p>
+        <div class="welcome-hero-stats">
+          <div class="stat-item"><span class="stat-number">13+</span><span class="stat-label" data-i18n="stat_attractions">Atrações</span></div>
+          <div class="stat-item"><span class="stat-number">🌸</span><span class="stat-label" data-i18n="stat_flowers">Capital das Flores</span></div>
+          <div class="stat-item"><span class="stat-number">🌍</span><span class="stat-label" data-i18n="stat_earth">Google Earth</span></div>
+        </div>
+        <button id="btn-welcome-start" class="btn-start" type="button">
+          <span data-i18n="welcome_btn">Explorar a Cidade</span> ➔
+        </button>
+      </div>
+    </section>
+
+    <!-- Home Section -->
+    <section id="home-section" class="card" hidden>
+      <h2 data-i18n="home_title">Descubra Ivaiporã</h2>
+      <p class="lead" data-i18n="home_desc">Explore os pontos turísticos, atrações naturais e a cultura vibrante de Ivaiporã, no coração do Paraná.</p>
+
+      <!-- Google Earth Quick Link -->
+      <div class="earth-banner">
+        <a href="https://earth.google.com/web/@-24.2878,-51.2264,650a,5000d,35y,0h,0t,0r" target="_blank" rel="noopener" class="earth-banner-link">
+          <span class="earth-banner-icon">🌍</span>
+          <div>
+            <strong data-i18n="earth_banner_title">Explorar Ivaiporã no Google Earth</strong>
+            <p data-i18n="earth_banner_desc">Veja a cidade em 3D direto no navegador</p>
+          </div>
+          <span class="earth-banner-arrow">→</span>
+        </a>
+      </div>
+
+      <h3 class="section-title" data-i18n="section_attractions">Atrações Turísticas</h3>
+      <ul id="attractions"></ul>
+
+      <div class="map-card">
+        <div>
+          <h3 class="section-title" data-i18n="map_title">Mapa de Ivaiporã</h3>
+          <p class="lead" data-i18n="map_desc">Explore o mapa interativo da cidade.</p>
+        </div>
+        <div class="map-grid">
+          <div id="map" aria-label="Mapa interativo de Ivaiporã"></div>
+          <aside id="map-details" class="map-details">
+            <h4 data-i18n="map_select">Selecione um ponto</h4>
+            <p class="muted" data-i18n="map_select_desc">Clique em um marcador no mapa para visualizar detalhes.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Place Detail Section -->
+    <section id="place-section" class="card" hidden>
+      <div class="place-header">
+        <button id="btn-back" class="btn-back" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i18n="btn_back">Voltar</span>
+        </button>
+        <h2 id="place-title">Nome do Lugar</h2>
+      </div>
+
+      <p id="place-desc" class="lead"></p>
+
+      <div class="action-buttons">
+        <a id="btn-google-earth" class="btn-earth" target="_blank" rel="noopener">
+          <span class="earth-icon">🌍</span> <span data-i18n="btn_google_earth">Abrir no Google Earth</span>
+        </a>
+      </div>
+
+      <h3 class="section-title" data-i18n="gallery_title">Galeria de Fotos</h3>
+      <div class="gallery-wrapper">
+        <div id="place-gallery" class="image-gallery"></div>
+      </div>
+
+      <h3 class="section-title" data-i18n="location_title">Localização & Atrações</h3>
+      <div class="mini-map-card">
+        <div class="map-tabs">
+          <button id="tab-map" class="map-tab-btn active" type="button">
+            <span class="tab-icon">🗺️</span> <span data-i18n="tab_map">Mapa</span>
+          </button>
+          <button id="tab-satellite" class="map-tab-btn" type="button">
+            <span class="tab-icon">🌍</span> <span data-i18n="tab_satellite">Satélite (Earth)</span>
+          </button>
+          <button id="tab-streetview" class="map-tab-btn" type="button">
+            <span class="tab-icon">🚶</span> <span data-i18n="tab_streetview">Street View</span>
+          </button>
+        </div>
+        <div class="mini-map-container-wrapper">
+          <div id="mini-map" aria-label="Mini mapa do local"></div>
+          <div id="mini-streetview" aria-label="Tour virtual Street View" hidden></div>
+        </div>
+        <div class="mini-map-legend">
+          <h4 data-i18n="poi_title">Pontos de Interesse</h4>
+          <ul id="mini-map-attractions"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">Ivaiporã Turismo — Feito com ❤️ para nossa cidade.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
