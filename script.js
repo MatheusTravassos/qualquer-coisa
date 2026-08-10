@@ -82,7 +82,7 @@ function updateMapsApiKey(newKey) {
 // ===== i18n TRANSLATIONS =====
 const TRANSLATIONS = {
   pt: {
-    splash_subtitle: "Descubra a beleza da nossa cidade",
+    splash_subtitle: "Desc a beleza da nossa cidade",
     settings_title: "Configurações",
     settings_language: "Idioma",
     settings_language_desc: "Português / English",
